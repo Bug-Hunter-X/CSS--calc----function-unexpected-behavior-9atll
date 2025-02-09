@@ -1,0 +1,18 @@
+To avoid unexpected behavior with `calc()`, ensure that:
+
+1. **Units are consistent:**  Use the same unit type throughout the calculation (e.g., `calc(100% - 50px)`, not `calc(100% - 50)`).
+2. **Whitespace is important:** Always use spaces around the `+`, `-`, `*`, and `/` operators (e.g., `calc(100% - 50px)`).
+3. **Parent element width:** The calculation relies on the parent element's dimensions. Make sure the parent element's width is properly defined.  If it's dynamic, consider alternative approaches.
+4. **Fallback:** Consider providing a fallback style that works in cases where `calc()` might not function as expected.
+
+Here's a potential solution for the problem demonstrated in `bug.css`:
+
+```css
+/* bugSolution.css */
+div {
+  width: calc(100% - 50px);
+  /* Fallback if calc() doesn't work well */
+  min-width: 200px;
+  background-color: lightblue;
+}
+```
